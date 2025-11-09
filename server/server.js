@@ -5,6 +5,7 @@ const app = express();
 const DB = require("./configs/DB.js")
 
 const userRouter = require("./routers/userRouter")
+const postRouter = require("./routers/postRouter.js")
 
 
 app.use(express.json());
@@ -12,6 +13,7 @@ app.use(express.json());
 
 
 app.use("/api/user",userRouter);
+app.use("/api/posts",postRouter);
 
 
 
