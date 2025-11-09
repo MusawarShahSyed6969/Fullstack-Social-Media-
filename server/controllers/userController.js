@@ -62,6 +62,17 @@ exports.LoginController = async (req, res) => {
     }
 };
 
+// USER PROFILE
+
+exports.getProfile = async (req, res, next) => {
+    try {
+        res.status(200).json(req.user);
+    } catch (err) { 
+        return res.status(500).json({ message: err.message });
+        // next(err);
+     }
+};
+
 // --- Verify Email ---
 exports.verifyEmailController = async (req, res) => {
     try {

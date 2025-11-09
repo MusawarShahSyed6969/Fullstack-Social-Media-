@@ -17,7 +17,7 @@ app.use("/api/user",userRouter);
 
 
 
-app.listen(process.env.PORT || 4000 , (req,res) => {
+app.listen(process.env.PORT || 4000 , () => {
     console.log(`Server is Live on ${process.env.PORT}`);
     
 })
