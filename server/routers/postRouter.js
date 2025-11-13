@@ -6,16 +6,13 @@ const {
   toggleLike,
   addComment
 } = require("../controllers/postController");
+const { protect } = require("../middleware/auth");
+const upload = require("../middleware/multer");
 
-// Temporary auth middleware (replace later with real JWT middleware)
-const mockAuth = (req, res, next) => {
-  req.user = { _id: "672fbc1234abcd56789ef000" }; // fake user id
-  next();
-};
 
-router.use(mockAuth); // apply to all routes for now
+router.use(protect); // apply to all routes for now
 
-router.post("/", createPost);
+router.post("/",upload.single("media"), createPost);
 router.get("/", getAllPosts);
 router.put("/:id/like", toggleLike);
 router.post("/:id/comment", addComment);
